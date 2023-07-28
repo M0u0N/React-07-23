@@ -1,26 +1,39 @@
 import './App.css';
-import { Link, } from 'react-router-dom';
+import { Link, Route,Routes } from 'react-router-dom';
+import Meist from './pages/Meist';
+import Kontakt from './pages/Kontakt';
+import Seaded from './pages/Seaded';
+import Avaleht from './pages/avaleht';
 
 
 function App() {
   return (
     <div className="App">
 
-      <Link to="nupp">
-        <button className='nupp'>nupp</button>
+      <Link to="/">
+        <button>Avaleht</button>
       </Link>
 
-      <Link to="text">
-        <text className='text'> sinine tekst muudab suurust </text>
+      <Link to="/kontakt">
+      <button>Kontakt</button>
       </Link>
 
-      <Link to="tekst">
-        <text className='tekst'>roheline tekst</text>
+      <Link to="/meist">
+      <button>Meist</button>
       </Link>
 
-      <Link to="pilt">
-        <img className="pilt" src="https://media.wired.com/photos/5a5547032b3a7778f5ca06cb/1:1/w_1200,h_1200,c_limit/Doggo-FeatureArt2-104685145.jpg" alt="" />
+      <Link to="/Seaded">
+      <button>Seaded</button>
       </Link>
+      <Routes>
+        <Route path="" element= {<Avaleht />} />
+        <Route path="kontakt" element= {<Kontakt />} />
+        <Route path="meist" element= {<Meist />} />
+        <Route path="seadmed" element= {<Seaded />} />
+      </Routes>
+
+
+
     </div>
   );
 }
