@@ -42,25 +42,26 @@ function App() {
       {/* ------------------------------------------ */}
 
       <Link to="/">
-        <button>Avaleht</button>
+        <button className=''>Avaleht</button>
       </Link>
 
       <Link to="/kontakt">
-      <button>Kontakt</button>
+      <button className=''>Kontakt</button>
       </Link>
 
       <Link to="/meist">
-      <button>Meist</button>
+      <button className=''>Meist</button>
       </Link>
 
-      <Link to="/Seaded">
-      <button>Seaded</button>
+      <Link to="/seaded">
+      <button className=''>Seaded</button>
       </Link>
+
       <Routes>
         <Route path="" element= {<Avaleht />} />
         <Route path="kontakt" element= {<Kontakt />} />
         <Route path="meist" element= {<Meist />} />
-        <Route path="seadmed" element= {<Seaded />} />
+        <Route path="seaded" element= {<Seaded />} />
       </Routes>
 
 
