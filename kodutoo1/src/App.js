@@ -4,6 +4,8 @@ import Meist from './pages/Meist';
 import Kontakt from './pages/Kontakt';
 import Seaded from './pages/Seaded';
 import Avaleht from './pages/avaleht';
+import Leht from './pages/Leht';
+import Loader from './pages/Loader';
 import {useState} from 'react';
 import {useRef} from 'react';
 
@@ -57,11 +59,21 @@ function App() {
       <button className=''>Seaded</button>
       </Link>
 
+      <Link to="/leht">
+      <button className=''>Leht</button>
+      </Link>
+
+      <Link to="/loader">
+      <button className=''>Loader</button>
+      </Link>
+
       <Routes>
         <Route path="" element= {<Avaleht />} />
         <Route path="kontakt" element= {<Kontakt />} />
         <Route path="meist" element= {<Meist />} />
         <Route path="seaded" element= {<Seaded />} />
+        <Route path="leht" element= {<Leht />} />
+        <Route path="loader" element= {<Loader />} />
       </Routes>
 
 
