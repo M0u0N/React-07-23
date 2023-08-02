@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Ostukorv() {
+  const [ostukorv, uuendaOstukorv] = useState(["Coca-cola", "Fanta", "Sprite"]);
+
+
+
   return (
     <div>
+      {ostukorv.map(toode => <div>{toode}</div>)}
       <div>Ostukorv on tühi</div>
        <Link to= "/lisa-toode">Tooteid lisama</Link>
 
-  </div>
-    )
+    </div>
+  )
 }
 
 export default Ostukorv
