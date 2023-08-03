@@ -8,6 +8,8 @@ import Leht from './pages/Leht';
 import Loader from './pages/Loader';
 import {useState} from 'react';
 import {useRef} from 'react';
+import Books from './pages/books';
+import Numbrid from './pages/Numbrid';
 
 function App() {
   const[sisselogitud, muudaSisselogitud] = useState("ei");
@@ -67,6 +69,14 @@ function App() {
       <button className=''>Loader</button>
       </Link>
 
+      <Link to="/books">
+      <button className=''>Books</button>
+      </Link>
+
+      <Link to="/numbrid">
+      <button className=''>Numbrid</button>
+      </Link>
+
       <Routes>
         <Route path="" element= {<Avaleht />} />
         <Route path="kontakt" element= {<Kontakt />} />
@@ -74,6 +84,8 @@ function App() {
         <Route path="seaded" element= {<Seaded />} />
         <Route path="leht" element= {<Leht />} />
         <Route path="loader" element= {<Loader />} />
+        <Route path="books" element= {<Books />} />
+        <Route path="numbrid" element= {<Numbrid />} />
       </Routes>
 
 
