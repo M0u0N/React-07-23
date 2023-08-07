@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import poedFailist from "../data/poed.json"
 
 function Poed() {
-    const [poed, uuendaPoed] = useState(["Ülemiste","Ämari","Viimsi","Rocca al Mare","Magistrali","Vesse","Kristiine","Järveotsa",]);
+    const [poed, uuendaPoed] = useState(poedFailist);
+    const poodViide = useRef();
 
     const reset = () => {
-        uuendaPoed (["Ülemiste","Ämari","Viimsi","Rocca al Mare","Magistrali","Vesse","Kristiine","Järveotsa",]);
+        uuendaPoed (poedFailist);
     }
 
     const sorteeriAZ = () => {
@@ -64,12 +66,32 @@ function Poed() {
     }
 
 
+    const arvutakokku = () =>  {
+        let summa = 0;
+        poed.forEach(ykspood => summa = summa + ykspood.length)
+        return summa;
+    }
+
+    const lisa = () => {
+        poed.push(poodViide.current.value);
+        uuendaPoed(poed.slice());
+    }
+
 
 
   return (
     <div>
         <button onClick={reset}>Reset</button>
         <div>Poode: {poed.length} tk </div>
+        <div>Tähemärke:  {arvutakokku()} tk </div>
+
+        <br /> 
+        <label>Poe Nimi</label> <br /> 
+        <input ref={poodViide} type="text" /> <br />
+        <button onClick={lisa}>Lisa</button>  <br/>  <br/>
+ 
+
+
         <button onClick={sorteeriAZ}>Sorteeri A - Z</button>
         <button onClick={sorteeriZA}>Sorteeri Z - A</button>
         <button onClick={sorteeriTahtedeArvKasv}>Sorteeri tähtede arv kasvavalt</button>

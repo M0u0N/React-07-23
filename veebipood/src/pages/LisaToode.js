@@ -1,4 +1,14 @@
 import React, {useRef, useState}  from 'react'
+import tootedFailist from "../data/tooted.json"
+import { ToastContainer, toast } from 'react-toastify';
+
+
+// kahe faili omavaheline suhtlus
+// 1. Failist. -> lihtne - refreshiga kaob
+// 2. Brauer -> lihtsam kui andmebaas - tooteid ei panda päriselt brauserisse
+// 3. Andmebaas -> nii on õige -raske
+// 4. Context (globaalne muutuja) -> nii on õige - raske -refreshiga kaob
+
 
 
 
@@ -13,8 +23,11 @@ function LisaToode() {
 const lisa = () => {
   if (inputiluger.current.value === "") {
     uuendaSonum("Tühja nimetusega tooded ei saa lisada!" )
+    toast.error("Tühja nimetusega tooded ei saa lisada! ")
   } else {
-  uuendaSonum("Toode edukalt sisestatud: " + inputiluger.current.value);
+  uuendaSonum("Toode edukalt lisatud: " + inputiluger.current.value);
+  toast.success("Toode edukalt lisatud: " + inputiluger.current.value )
+  tootedFailist.push(inputiluger.current.value);
   }
   }
 
@@ -25,6 +38,13 @@ const lisa = () => {
       <input ref={inputiluger} type="text" /> <br />
       <button onClick={lisa}>Lisa</button>
 
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        theme="dark"
+      
+      />  
 
     </div>
   )
