@@ -67,6 +67,8 @@ function App() {
           <button className="nupp"> Halda </button>
         </Link>
 
+
+
            <Routes>
             <Route path='' element= { <Avaleht/> } />
             <Route path='lisa-toode' element= { <LisaToode/> } />
@@ -76,8 +78,8 @@ function App() {
             <Route path='poed' element= { <Poed/> } />
             <Route path='tooted' element= { <Tooted/> } />
             <Route path='halda' element= { <HaldaTooted/> } />
-            <Route path='muuda' element= { <MuudaToode/> } />
-            <Route path='toode' element= { <YksToode/> } />
+            <Route path='muuda/:index' element= { <MuudaToode/> } />
+            <Route path='toode/:jrknr' element= { <YksToode/> } />
             <Route path='*' element= { <MitteLeitud/> } />
            </Routes>
 

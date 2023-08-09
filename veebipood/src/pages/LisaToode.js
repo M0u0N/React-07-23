@@ -15,6 +15,9 @@ import { ToastContainer, toast } from 'react-toastify';
 function LisaToode() {
   const[sonum, uuendaSonum] = useState("Lisa Toode!");
   const inputiluger = useRef();
+  const hindRef = useRef();
+  const piltRef = useRef();
+  const aktiivneRef = useRef();
 
   // function lisa () { } // ES5
 
@@ -27,7 +30,11 @@ const lisa = () => {
   } else {
   uuendaSonum("Toode edukalt lisatud: " + inputiluger.current.value);
   toast.success("Toode edukalt lisatud: " + inputiluger.current.value )
-  tootedFailist.push(inputiluger.current.value);
+  tootedFailist.push({
+    nimi: inputiluger.current.value,
+    hind: Number(hindRef.current.value),
+    pilt: piltRef.current.value,
+    aktiivne: aktiivneRef.current.checked });
   }
   }
 
@@ -36,6 +43,12 @@ const lisa = () => {
       <div>{sonum}</div>
       <label>Toote nimi</label> <br />
       <input ref={inputiluger} type="text" /> <br />
+      <label>Toote hind</label> <br />
+      <input ref={hindRef} type="number" /> <br />
+      <label>Toote pilt</label> <br />
+      <input ref={piltRef} type="text" /> <br />
+      <label>Toode aktiivne</label> <br />
+      <input ref={aktiivneRef} type="checkbox" /> <br />
       <button onClick={lisa}>Lisa</button>
 
 
