@@ -3,6 +3,7 @@ import './App.css';
 import Avaleht from './pages/Avaleht';
 import JoogiHaldus from './pages/JoogiHaldus';
 import LisaJook from './pages/LisaJook';
+import Jook from './pages/Jook';
 
 function App() {
   return (
@@ -20,11 +21,11 @@ function App() {
       <button className='nupp'>Halda jooke</button>
     </Link>
 
-
     <Routes>
       <Route path='' element={< Avaleht/>} />
       <Route path='/lisa' element={< LisaJook/>} />
       <Route path='/halda' element={< JoogiHaldus/>} />
+      <Route path='/jook/:number' element={< Jook/>} />
     </Routes>
 
 
