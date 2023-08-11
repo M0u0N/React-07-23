@@ -6,6 +6,7 @@ import TagasisideAndjad from './pages/TagasisideAndjad'
 import Uusleht from './pages/Uusleht';
 import YksiksTagasisideAndja from './pages/YksiksTagasisideAndja';
 import Tegevused from './pages/Tegevused';
+import Kasutajad from './pages/Kasutajad';
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
         <button className="nupp"> Vaata mida tegema pead </button>
       </Link>
 
+      <Link to="/kasutajad">
+        <button className="nupp"> Kasutajad </button>
+      </Link>
+
 
       <Routes>
         <Route path='' element ={<Avaleht/>} />
@@ -46,6 +51,7 @@ function App() {
         <Route path='/uusleht' element ={<Uusleht/>} />
         <Route path='/yks-andja/:index' element ={<YksiksTagasisideAndja/>} />
         <Route path='/tegevused' element= {<Tegevused/>} />
+        <Route path='/kasutajad' element= {<Kasutajad/>} />
       </Routes>
     </div>
   );
