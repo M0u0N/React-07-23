@@ -2,5 +2,9 @@
 {"nimi": "BMW", "hind": 33000,"pilt": "https://www.truck1-ee.com/img/Muu_seadmestik_BMW-xxl-18894/18894_8002622731301.jpg", "aktiivne": true },
 {"nimi": "Nobe", "hind": 47000,"pilt": "https://nobecars.com/wp-content/uploads/2022/01/Untitled-2-5-1024x473.png", "aktiivne": true },
 {"nimi": "Tesla", "hind": 60000,"pilt": "https://static.dezeen.com/uploads/2016/08/tesla-model-x_dezeen_1568_4-852x609.jpg", "aktiivne": true },
-{"nimi": "Audi", "hind": 200000,"pilt": "https://img12.img-bcg.eu/auto24/photo_series/770/992/76466992.jpg", "aktiivne": true }
+{"nimi": "Audi", "hind": 200000,"pilt": "https://img12.img-bcg.eu/auto24/photo_series/770/992/76466992.jpg", "aktiivne": true },
+{"nimi": "Pagani", "hind": 5000000,"pilt": "https://images.squarespace-cdn.com/content/5f7ca9b4bb17060b028086bb/1655849145441-NIB16PAJRVI4JQSCQFHD/TED74486.jpg?format=1500w&content-type=image%2Fjpeg", "aktiivne": true },
+{"nimi": "Lamborghini", "hind": 500000,"pilt": "https://media.evo.co.uk/image/private/s--Wt36Q-sR--/v1556213696/evo/2016/08/001-lambo-centenario-roadster.jpg", "aktiivne": true },
+{"nimi": "Aston Martin", "hind": 2000000,"pilt": "https://media.gq-magazine.co.uk/photos/6405fb643e977a7efb8a7764/4:3/w_1440,h_1080,c_limit/Aston-Martin-Valkyrie-HED.jpg", "aktiivne": true }
+
 ]

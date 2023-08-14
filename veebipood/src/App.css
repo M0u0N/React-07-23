@@ -46,3 +46,13 @@
   background-color: aliceblue;
   min-height: 100vh;
 }
+
+.aktiivne{
+  background-color: rgb(236, 243, 236);
+  border: 1px solid green;
+}
+
+.mitteaktiivne{
+  background-color: rgb(223, 205, 205);
+  border: 1px solid red;
+}

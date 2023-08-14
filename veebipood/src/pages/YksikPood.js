@@ -6,6 +6,11 @@ function YksikPood() {
     const {index} = useParams();
     const poed = poedFail[index]
 
+
+  if (poed === undefined) {
+    return <div>Poodi ei leitud</div>
+  }
+
   return (
     <div>
         <div>Järjekorranumber: {index} </div>
@@ -17,4 +22,3 @@ function YksikPood() {
 }
 
 export default YksikPood
-// {"nimi": "Järveotsa", "aeg": "9 - 19", "tel:":  "23888564"}

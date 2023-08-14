@@ -1,11 +1,14 @@
-import React, { useRef } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import tootedFailist from '../data/tooted.json'
+import React, { useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import tootedFailist from "../data/tooted.json";
 
 function MuudaToode() {
-  const {index} = useParams();
+  const { index } = useParams();
   const leitud = tootedFailist[index];
   const nimiRef = useRef();
+  const hindRef = useRef();
+  const piltRef = useRef();
+  const aktiivneRef = useRef();
   const navigate = useNavigate();
 
   // use-d on Reacti HOOKid ehk Reacti erikood, selle abil React lihtsustab JavaScripti
@@ -17,20 +20,42 @@ function MuudaToode() {
   // 5. ta ei tohi olla dünaamiliselt loodud (vahepeal pole loodud)
 
   const muuda = () => {
-    tootedFailist[index] = nimiRef.current.value;
+    tootedFailist[index] = {
+      nimi: nimiRef.current.value,
+      hind: Number(hindRef.current.value),
+      pilt: piltRef.current.value,
+      aktiivne: aktiivneRef.current.checked,
+    };
     navigate("/halda");
+  };
+
+  if (leitud === undefined) {
+    return <div>Toodet ei leitud!</div>;
   }
 
   return (
     <div>
       <label>Tootenimi</label> <br />
-      <input ref={nimiRef} defaultValue={leitud} type='text'/> <br/>
+      <input ref={nimiRef} defaultValue={leitud.nimi} type="text" /> <br />
       <button onClick={muuda}>Muuda</button> <br />
-
-
-
+      <label>Tootehind</label> <br />
+      <input ref={hindRef} defaultValue={leitud.hind} type="number" /> <br />
+      <button onClick={muuda}>Muuda</button> <br />
+      <label>Tootepilt</label> <br />
+      <input ref={piltRef} defaultValue={leitud.pilt} type="text" /> <br />
+      <button onClick={muuda}>Muuda</button> <br />
+      <label>Toode aktiivne</label> <br />
+      <input
+        ref={aktiivneRef}
+        defaultChecked={leitud.aktiivne}
+        type="checkbox"
+      />{" "}
+      <br />
+      <button onClick={muuda}>Muuda</button> <br />
     </div>
-  )
+  );
 }
 
-export default MuudaToode
+export default MuudaToode;
+
+// JSON.stringify()

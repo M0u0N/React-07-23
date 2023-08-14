@@ -80,7 +80,7 @@ function App() {
             <Route path='tooted' element= { <Tooted/> } />
             <Route path='halda' element= { <HaldaTooted/> } />
             <Route path='muuda/:index' element= { <MuudaToode/> } />
-            <Route path='toode/:jrknr' element= { <YksToode/> } />
+            <Route path='toode/:nimi' element= { <YksToode/> } />
             <Route path='yks-pood/:index' element= { <YksikPood/> } />
             <Route path='*' element= { <MitteLeitud/> } />
            </Routes>

@@ -115,7 +115,7 @@ function Poed() {
         <button onClick={filtreeriKesSisaldabISLuhendit}>Jäta alles 'is' lühendiga</button>
         <button onClick={filtreeriKelleKolmasTahtI}>Filtreeri kelle kolmas täht I</button>
         {poed.map((yksPood, index) => (
-        <div>
+        <div key={yksPood.nimi}> 
             <Link to={"/yks-pood/" + index}>
             {yksPood.nimi} {" "}
             <button onClick={() => kustuta(index)}>x</button>
