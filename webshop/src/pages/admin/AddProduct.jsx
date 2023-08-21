@@ -15,13 +15,38 @@ function AddProduct() {
   const activeRef = useRef();
 
   const add = () => {
+    if (idRef.current.value === "") {
+      setText(t("failID"))
+      toast.error(t("failID"))
+      return;
+    } 
+
     if (nameRef.current.value === "") {
       setText(t("fail"))
       toast.error(t("fail"))
-    } else {
+      return;
+    }
+
+    if (imageRef.current.value.includes(" ")) {
+      setText(t("failImageSpace"))
+      toast.error(t("failImageSpace"))
+      return;
+    }
+
+    if (nameRef.current.value[0].toLowerCase() === nameRef.current.value[0]) {
+      setText(t("failNameLowercase"))
+      toast.error(t("failNameLowercase"))
+      return;
+    }
+
+    
+
+
+    else {
       setText(t("success") + nameRef.current.value)
       toast.success(t("success") + nameRef.current.value)
-      productsFromFile.push({
+      productsFromFile.push(
+        {
         "id": Number(idRef.current.value),
         "image": imageRef.current.value,
         "name": nameRef.current.value,

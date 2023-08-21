@@ -36,6 +36,10 @@ function App() {
     localStorage.setItem("language", "ee")
   }
 
+  const changeLangFR = () => {
+    i18n.changeLanguage("fr")
+    localStorage.setItem("language", "fr")
+  }
 
   return (
     <div className="App">
@@ -50,8 +54,13 @@ function App() {
             <Nav.Link as={Link} to="/shops">{t("shops")}</Nav.Link>
           </Nav>
           <Nav>
-            <button onClick={changeLangEN}>english</button>
-            <button onClick={changeLangEE}>estonian</button>
+            
+          <Nav.Link>
+            <img className='lang' onClick={changeLangEN}  src="/english.png" alt="" />
+            <img className='lang' onClick={changeLangEE}  src="/estonian.png" alt="" />
+            <img className='lang' onClick={changeLangFR}  src="/french.png" alt="" />
+          </Nav.Link>
+
             <Nav.Link as={Link} to="/cart">{t("cart")}</Nav.Link>
             <Nav.Link as={Link} to="/login">{t("login")}</Nav.Link>
             </Nav>
@@ -65,7 +74,7 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="contact" element={<ContactUs />} />
         <Route path="shops" element={<Shops />} />
-        <Route path="product/:name" element={<SingleProduct />} />
+        <Route path="product/:productId" element={<SingleProduct />} />
         <Route path="admin" element={<AdminHome />} />
         <Route path="admin/add-product" element={<AddProduct />} />
         <Route path="admin/edit-product/:productId" element={<EditProduct />} />
@@ -99,3 +108,26 @@ export default App;
 //5.b cart.js ostukorvi vaatamine, tühjendamine, summa, kustuta, kui tühi ei näita
 //6. kodune projekt tõlge ja bootstrap(uudised)
 //7. react toastify, uus toode lisades, kustutades, ostukorvi lisades
+
+
+// 3.4 keel, chatgpt
+// addproducts.js id unikaalsuse kontroll
+
+
+
+//23.08:
+//poed: leaflet
+//kontakivorm: emailJS
+//ostukorvis salvestamine localstorages
+
+
+//28.08
+//ostukorvis koguse
+//ostukorvis kujundus
+//pakiautomaadid
+
+// 30.08
+//andmebaas
+
+//04.09
+//makse - EveryPay

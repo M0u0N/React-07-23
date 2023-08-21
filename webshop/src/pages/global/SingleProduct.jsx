@@ -1,12 +1,12 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import productsFromFile from '../../Data/products.json'
 import { useTranslation } from 'react-i18next';
 
 function SingleProduct() {
   const {t} = useTranslation();
-  const {name} = useParams();
-  const found = productsFromFile.find(product => product.name === name)
+  const {productId} = useParams();
+  const found = productsFromFile.find(product => product.id === Number(productId))
 
   if (found === undefined)
   return <div>{t("notFound")} </div>
@@ -17,6 +17,9 @@ function SingleProduct() {
       <div>{t("prodPrice")} {found.price} € </div>
       <div>{t("prodDescription")} {found.description} </div>
       <img className='picture' src={found.image} alt="" />
+      <Link to={"/"}>
+        <button>{t("back")}</button>
+      </Link>
     </div>
   )
 }

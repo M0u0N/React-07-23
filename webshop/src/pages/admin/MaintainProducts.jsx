@@ -1,44 +1,53 @@
-import React, { useState } from 'react'
-import productsFromFile from '../../Data/products.json'
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useRef, useState } from "react";
+import productsFromFile from "../../Data/products.json";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { ToastContainer, toast } from "react-toastify";
 
 function MaintainProducts() {
   const [products, setProducts] = useState(productsFromFile);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
+  const searchedRef = useRef();
 
-  const del = (index) => {
+  const deleteProduct = (index) => {
     productsFromFile.splice(index, 1);
-    toast.warn(t("itemRemoved"))
-    setProducts(productsFromFile.slice())
-  }
+    toast.warn(t("itemRemoved"));
+    setProducts(productsFromFile.slice());
+  };
 
+  const searchFromProducts = () => {
+    const result = productsFromFile.filter((product) =>
+      product.name.toLowerCase.includes(searchedRef.current.value.toLowerCase())
+    );
+    setProducts(result);
+  };
 
   return (
     <div>
-      <div> {t("ttlProd")} {products.length} {t("pcs")} </div>
+      <input onChange={searchFromProducts} ref={searchedRef} type="text" />
+      <div>
+        {" "}
+        {t("ttlProd")} {products.length} {t("pcs")}{" "}
+      </div>
       <br />
       {products.map((product, index) => (
-      <div key={product.id}>
-        <img src={product.image} alt="" />
-        <div>{product.id}</div>
-        <div>{product.name}</div>
-        <div>{product.price}</div>
-        <div>{product.category}</div>
-        <div>{product.description}</div>
-        <button onClick={() => del()}>{t("delete")}</button>
-        <Button as={Link} to={"/admin/edit-product/" + product.id}>{t("edit")}</Button>
-      </div>
+        <div key={product.id}>
+          <img src={product.image} alt="" />
+          <div>{product.id}</div>
+          <div>{product.name}</div>
+          <div>{product.price}</div>
+          <div>{product.category}</div>
+          <div>{product.description}</div>
+          <button onClick={() => deleteProduct(index)}>{t("delete")}</button>
+          <Button as={Link} to={"/admin/edit-product/" + product.id}>
+            {t("edit")}
+          </Button>
+        </div>
       ))}
-      <ToastContainer
-        position="top-right"
-        theme="dark"
-      
-      />  
+      <ToastContainer position="top-right" theme="dark" />
     </div>
-  )
+  );
 }
 
-export default MaintainProducts
+export default MaintainProducts;

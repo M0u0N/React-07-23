@@ -20,6 +20,10 @@ function HomePage () {
     setProducts(productsFromFile.slice())
  }
 
+  const reset = () => {
+    setProducts(productsFromFile);
+  }
+
   const sortAZ = () => {
     products.sort((a, b) => a.name.localeCompare(b.name));
       setProducts(products.slice())
@@ -56,6 +60,7 @@ function HomePage () {
     <div>
       <div> {t("ttlProd")} {products.length} {t("pcs")} </div>
       <br /> 
+      <button onClick={reset}>Reset</button>
       <button onClick={() => sortAZ()}>{t("sortAZ")} </button>
       <button onClick={() => sortZA()}>{t("sortZA")}</button>
       <button onClick={() => sortPriceAsc()}>{t("sortPA")}</button>
@@ -71,14 +76,14 @@ function HomePage () {
         <div> {product.name} </div>
         <div> {product.price} €</div>
         <button onClick={() => addCart(product)}>{t("addCart")}</button>
-        <Link to={"/product/" + product.name}>
+        <Link to={"/product/" + product.id}>
           <button>{t("lookCloser")} </button>
       </Link>
       </div>
       
       ))}
        <ToastContainer
-        position="top-right"
+        position="bottom-right"
         theme="dark"
       
       />  
