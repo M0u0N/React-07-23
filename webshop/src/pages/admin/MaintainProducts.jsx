@@ -45,7 +45,7 @@ function MaintainProducts() {
           </Button>
         </div>
       ))}
-      <ToastContainer position="top-right" theme="dark" />
+      <ToastContainer position="bottom-right" theme="dark" />
     </div>
   );
 }

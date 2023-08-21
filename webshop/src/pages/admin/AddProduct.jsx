@@ -14,6 +14,18 @@ function AddProduct() {
   const categoryRef = useRef();
   const activeRef = useRef();
 
+  const [idUnique, setIdUnique] = useState("");
+
+  const checkUniqueID = () => {
+    const index = productsFromFile.findIndex(product => product.id === Number(idRef.current.value))
+    
+    if (index === -1) {
+      setIdUnique(true)
+    } else {
+      setIdUnique(false)
+    }
+  }
+
   const add = () => {
     if (idRef.current.value === "") {
       setText(t("failID"))
@@ -38,15 +50,10 @@ function AddProduct() {
       toast.error(t("failNameLowercase"))
       return;
     }
-
-    
-
-
     else {
       setText(t("success") + nameRef.current.value)
       toast.success(t("success") + nameRef.current.value)
-      productsFromFile.push(
-        {
+      productsFromFile.push({
         "id": Number(idRef.current.value),
         "image": imageRef.current.value,
         "name": nameRef.current.value,
@@ -60,9 +67,10 @@ function AddProduct() {
 
   return (
     <div>
+      {idUnique === false && <div>{t("uniqueID")}</div>}
       <div>{text}</div>
       <label>{t("id")}</label> <br />
-      <input ref={idRef}  type='number' /> <br />
+      <input ref={idRef} className={idUnique === false ? "error" : undefined} onChange={checkUniqueID}  type='number' /> <br />
       <label>{t("name")}</label> <br />
       <input ref={nameRef}  type='text' /> <br />
       <label>{t("price")}</label> <br />
@@ -75,7 +83,7 @@ function AddProduct() {
       <input ref={descriptionRef}  type='text' /> <br />
       <label>{t("active")}</label> <br />
       <input ref={activeRef} type='checkbox' /> <br />
-      <button onClick={add}>{t("add")}</button>
+      <button disabled={idUnique === false} onClick={add}>{t("add")}</button>
 
       <ToastContainer
         position="top-right"

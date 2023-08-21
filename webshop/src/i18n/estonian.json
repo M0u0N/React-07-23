@@ -45,7 +45,7 @@
     "prodDescription" : "Toote kirjeldus:",
     "back": "Tagasi kodulehele",
     "failID" : "Tühja Idga toodet ei saa lisada!",
-    "imageSpace" : "Pildi lingis ei tohi olla tühikut!",
-    "nameLowercase" : "Nimi peab algama suure tähega!"
-    
+    "failImageSpace" : "Pildi lingis ei tohi olla tühikut!",
+    "failNameLowercase" : "Nimi peab algama suure tähega!",
+    "uniqueID" : "ID pole unikaalne!"
     }

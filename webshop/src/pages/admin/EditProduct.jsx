@@ -38,22 +38,22 @@ function EditProduct() {
 
   const edit = () => {
     if (idRef.current.value === "") {
-      toast.error(t())
+      toast.error(t("failID"))
       return;
     }
 
     if (nameRef.current.value === "") {
-      toast.error(t())
+      toast.error(t("fail"))
       return;
     }
 
     if (nameRef.current.value[0].toUpperCase() !== nameRef.current.value[0]) {
-      toast.error(t())
+      toast.error(t("failNameLowercase"))
       return;
     }
 
     if (imageRef.current.value.includes(" ")) {
-      toast.error(t())
+      toast.error(t("failImageSpace"))
       return;
     }
 
@@ -79,22 +79,22 @@ function EditProduct() {
 
   return (
     <div>
-      {idUnique === false && <div>ID pole unikaalne</div>}
-      <label>ID</label> <br />
+      {idUnique === false && <div>{t("uniqueID")}</div>}
+      <label>{t("id")}</label> <br />
       <input className={idUnique === false ? "error" : undefined} ref={idRef} onChange={checkUniqueID} defaultValue={found.id} type='number' /> <br />
-      <label>Name</label> <br />
+      <label>{t("name")}</label> <br />
       <input ref={nameRef} defaultValue={found.name} type='text' /> <br />
-      <label>Price</label> <br />
+      <label>{t("price")}</label> <br />
       <input ref={priceRef} defaultValue={found.price} type='number' /> <br />
-      <label>Image</label> <br />
+      <label>{t("image")}</label> <br />
       <input ref={imageRef} defaultValue={found.image} type='text' /> <br />
-      <label>Category</label> <br />
+      <label>{t("category")}</label> <br />
       <input ref={categoryRef} defaultValue={found.category} type='text' /> <br />
-      <label>Description</label> <br />
+      <label>{t("description")}</label> <br />
       <input ref={descriptionRef} defaultValue={found.description} type='text' /> <br />
-      <label>Active</label> <br />
+      <label>{t("active")}</label> <br />
       <input ref={activeRef} defaultChecked={found.active} type='checkbox' /> <br />
-      <button disabled={idUnique === false} onClick={edit}>edit</button>
+      <button disabled={idUnique === false} onClick={edit}>{t("edit")}</button>
     </div>
   )
 }

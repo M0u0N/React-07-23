@@ -45,6 +45,7 @@
     "prodDescription" : "Description of product",
     "back": "Back to homepage",
     "failID" : "Cant add a product with empty ID!",
-    "imageSpace" : "link cant have a space in it!",
-    "nameLowercase" : "Name can't start with lowercase"
+    "failImageSpace" : "Image link cant have a space in it!",
+    "failNameLowercase" : "Name must start with and uppercase letter!",
+    "uniqueID" : "ID is not unique!"
   }

@@ -41,6 +41,11 @@ function App() {
     localStorage.setItem("language", "fr")
   }
 
+  const changeLangSP = () => {
+    i18n.changeLanguage("sp")
+    localStorage.setItem("language", "sp")
+  }
+
   return (
     <div className="App">
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
@@ -59,6 +64,8 @@ function App() {
             <img className='lang' onClick={changeLangEN}  src="/english.png" alt="" />
             <img className='lang' onClick={changeLangEE}  src="/estonian.png" alt="" />
             <img className='lang' onClick={changeLangFR}  src="/french.png" alt="" />
+            <img className='lang' onClick={changeLangSP}  src="/spanish.png" alt="" />
+            
           </Nav.Link>
 
             <Nav.Link as={Link} to="/cart">{t("cart")}</Nav.Link>
