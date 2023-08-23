@@ -18,8 +18,10 @@ function MaintainProducts() {
 
   const searchFromProducts = () => {
     const result = productsFromFile.filter((product) =>
-      product.name.toLowerCase.includes(searchedRef.current.value.toLowerCase())
-    );
+      product.name.toLowerCase().includes(searchedRef.current.value.toLowerCase()) || 
+      product.description.toLowerCase().includes(searchedRef.current.value.toLowerCase()) ||
+      product.id.toString().includes(searchedRef.current.value)
+      );
     setProducts(result);
   };
 
@@ -32,7 +34,7 @@ function MaintainProducts() {
       </div>
       <br />
       {products.map((product, index) => (
-        <div key={product.id}>
+        <div key={product.id} className={product.active ? "active" : "inactive"} >
           <img src={product.image} alt="" />
           <div>{product.id}</div>
           <div>{product.name}</div>

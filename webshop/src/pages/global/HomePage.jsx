@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import productsFromFile from "../../Data/products.json"
-import cartFromFile from "../../Data/cart.json"
+// import cartFromFile from "../../Data/cart.json"
 
 
 
@@ -15,7 +15,11 @@ function HomePage () {
   const {t} = useTranslation();
 
   const addCart = (chosenProduct) => {
-    cartFromFile.push(chosenProduct);
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]" ); 
+    cart.push(chosenProduct);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // cartFromFile.push(chosenProduct);
     toast.success(t("itemAddedToCart"))
     setProducts(productsFromFile.slice())
  }

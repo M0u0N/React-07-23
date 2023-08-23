@@ -21,6 +21,12 @@ function EditProduct() {
   const [idUnique, setIdUnique] = useState("");
 
   const checkUniqueID = () => {
+    if (idRef.current.value === productId) {
+      setIdUnique(true)
+      return;
+    }
+
+
     const index = productsFromFile.findIndex(product => product.id === Number(idRef.current.value))
     // const product = productsFromFile.find(product => product.id === Number(idRef.current.value))
     // const result = productsFromFile.filter(product => product.id === Number(idRef.current.value))
@@ -95,7 +101,10 @@ function EditProduct() {
       <label>{t("active")}</label> <br />
       <input ref={activeRef} defaultChecked={found.active} type='checkbox' /> <br />
       <button disabled={idUnique === false} onClick={edit}>{t("edit")}</button>
+        <ToastContainer position="bottom-right" theme="dark" />
+
     </div>
+    
   )
 }
 

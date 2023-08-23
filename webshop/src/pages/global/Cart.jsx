@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom'
-import cartFromFile from '../../Data/cart.json'
+import { ToastContainer, toast } from 'react-toastify';
+// import cartFromFile from '../../Data/cart.json'
 
 function Cart() {
-  const [cart, setCart] = useState(cartFromFile)
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]" ))
   const {t} = useTranslation();
 
   const add = (chosenProduct) => {
@@ -15,11 +16,14 @@ function Cart() {
   const del = (index) => {
     cart.splice(index, 1)
     setCart(cart.slice())
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 
   const empty = () => {
     cart.splice(0);
     setCart(cart.slice())
+    toast.success("cart emptied")
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 
   const fullCost = () => {
@@ -48,7 +52,11 @@ function Cart() {
         <Link to="/">{t("addProducts")} </Link>
         </>
       )}
+      <ToastContainer
+        position="bottom-right"
+        theme="dark"
       
+      />  
     </div>
   )
 }

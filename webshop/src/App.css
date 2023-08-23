@@ -31,3 +31,23 @@ box-shadow: 0 0 10px rgb(49, 42, 42);
   outline: none !important;
   border: 2px solid red !important;
 }
+
+.map {
+  height: 300px;
+  margin: 5%;
+  border-radius: 10px;
+}
+
+.active {
+  background-color: 1px solid green;
+  background-color: rgb(229, 238, 229);
+}
+
+.inactive {
+  background-color: 1px solid red;
+  background-color: rgb(231, 217, 217);
+}
+
+.active, .inactive {
+  margin: 5px;
+}
