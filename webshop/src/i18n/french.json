@@ -1,13 +1,18 @@
 {
+  "nav": {
     "admin": "Vers la vue admin",
-      "contact": "Nous contacter",
-      "shops": "Vers les boutiques",
-      "cart": "Panier",
-      "login": "Se connecter ici",
-      "maintain-categories": "Gérer les catégories",
+    "contact": "Nous contacter",
+    "shops": "Vers les boutiques",
+    "cart": "Panier",
+    "login": "Se connecter ici"
+  },
+
+  "admin": {
+    "maintain-categories": "Gérer les catégories",
       "maintain-shops": "Gérer les boutiques",
       "add-product": "Ajouter un nouveau produit",
-      "maintain-products": "Gérer les produits",
+      "maintain-products": "Gérer les produits"
+  },
       "sortAZ" : "Trier A - Z",
       "sortZA" : "Trier Z - A",
       "sortPA" : "Trier par prix croissant",

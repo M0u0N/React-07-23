@@ -1,13 +1,18 @@
 {
+    "nav": {
     "admin": "Admin vaatesse",
     "contact": "Kontaktid",
     "shops": "Meie poed",
     "cart": "Ostukorv",
-    "login": "Logi sisse",
+    "login": "Logi sisse"
+  },
+
+  "admin": {
     "maintain-categories": "Halda kategooriaid",
     "maintain-shops": "Halda poode",
     "add-product": "Lisa uus toode",
-    "maintain-products": "Halda tooteid",
+    "maintain-products": "Halda tooteid"
+  },
     "sortAZ" : "Sorteeri A - Z",
     "sortZA" : "Sorteeri Z - A",
     "sortPA" : "Sorteeri hind kasvavalt",

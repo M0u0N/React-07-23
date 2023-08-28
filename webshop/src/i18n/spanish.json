@@ -1,13 +1,19 @@
 {
+  "nav": {
     "admin": "Ir a vista de administrador",
     "contact": "Contacto",
     "shops": "Ir a tiendas",
     "cart": "Carrito",
-    "login": "Iniciar sesión aquí",
+    "login": "Iniciar sesión aquí"
+  },
+
+  "admin": {
     "maintain-categories": "Administrar categorías",
     "maintain-shops": "Administrar tiendas",
     "add-product": "Agregar nuevo producto",
-    "maintain-products": "Administrar productos",
+    "maintain-products": "Administrar productos"
+  },
+    
     "sortAZ" : "Ordenar A - Z",
     "sortZA" : "Ordenar Z - A",
     "sortPA" : "Ordenar por precio ascendente",

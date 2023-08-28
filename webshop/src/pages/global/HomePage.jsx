@@ -15,11 +15,15 @@ function HomePage () {
   const {t} = useTranslation();
 
   const addCart = (chosenProduct) => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]" ); 
-    cart.push(chosenProduct);
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]" );
+    const index = cart.findIndex(cartProduct => cartProduct.product.id === chosenProduct.id);
+    if (index >= 0) {
+      cart[index].quantity = cart[index].quantity +1
+    } else {
+      cart.push({ "quantity": 1, "product": chosenProduct});
+    }
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    // cartFromFile.push(chosenProduct);
     toast.success(t("itemAddedToCart"))
     setProducts(productsFromFile.slice())
  }
@@ -78,7 +82,7 @@ function HomePage () {
       <div key={product.id}>
         <img src={product.image} alt="" />
         <div> {product.name} </div>
-        <div> {product.price} €</div>
+        <div> {(product.price).toFixed(2)} €</div>
         <button onClick={() => addCart(product)}>{t("addCart")}</button>
         <Link to={"/product/" + product.id}>
           <button>{t("lookCloser")} </button>

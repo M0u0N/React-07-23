@@ -54,9 +54,9 @@ function App() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/admin"> {t("admin")} </Nav.Link>
-            <Nav.Link as={Link} to="/contact">{t("contact")}</Nav.Link>
-            <Nav.Link as={Link} to="/shops">{t("shops")}</Nav.Link>
+            <Nav.Link as={Link} to="/admin"> {t("nav.admin")} </Nav.Link>
+            <Nav.Link as={Link} to="/contact">{t("nav.contact")}</Nav.Link>
+            <Nav.Link as={Link} to="/shops">{t("nav.shops")}</Nav.Link>
           </Nav>
           <Nav>
             
@@ -68,8 +68,8 @@ function App() {
             
           </Nav.Link>
 
-            <Nav.Link as={Link} to="/cart">{t("cart")}</Nav.Link>
-            <Nav.Link as={Link} to="/login">{t("login")}</Nav.Link>
+            <Nav.Link as={Link} to="/cart">{t("nav.cart")}</Nav.Link>
+            <Nav.Link as={Link} to="/login">{t("nav.login")}</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
