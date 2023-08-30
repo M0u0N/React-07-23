@@ -8,6 +8,8 @@ import LisaUudis from './pages/LisaUudis';
 import HaldaUudised from './pages/HaldaUudised';
 import YksUudis from './pages/YksUudis';
 import MuudaUudis from './pages/MuudaUudis';
+import KasutajaPostitus from './pages/KasutajaPostitus';
+import YksPostitus from './pages/YksPostitus';
 
 
 
@@ -48,6 +50,8 @@ function App() {
       <Route path='halda_uudised' element= { <HaldaUudised /> }  />
       <Route path='uudis/:index' element= { <YksUudis /> }  />
       <Route path='muuda/:index' element= { <MuudaUudis /> }  />
+      <Route path='kasutaja-postitus/:kasutajaId' element= { <KasutajaPostitus /> }  />
+      <Route path='vaata-postitus/:postituseId' element= { <YksPostitus /> }  />
       </Routes>
     </div>
   );
