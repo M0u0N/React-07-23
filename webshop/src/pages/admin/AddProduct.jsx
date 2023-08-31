@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react'
-import productsFromFile from '../../Data/products.json'
+import React, { useRef, useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import config from "../../Data/config.json"
 
 function AddProduct() {
   const {t} = useTranslation();
@@ -15,9 +15,21 @@ function AddProduct() {
   const activeRef = useRef();
 
   const [idUnique, setIdUnique] = useState("");
+  const [categories, setCategories] = useState([])
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    fetch(config.products)
+    .then(res => res.json())
+    .then(json => setProducts(json || []))
+
+    fetch(config.categories)
+    .then(res => res.json())
+    .then(json => setCategories(json || []))
+  }, []);
 
   const checkUniqueID = () => {
-    const index = productsFromFile.findIndex(product => product.id === Number(idRef.current.value))
+    const index = products.findIndex(product => product.id === Number(idRef.current.value))
     
     if (index === -1) {
       setIdUnique(true)
@@ -53,7 +65,7 @@ function AddProduct() {
     else {
       setText(t("success") + nameRef.current.value)
       toast.success(t("success") + nameRef.current.value)
-      productsFromFile.push({
+      products.push({
         "id": Number(idRef.current.value),
         "image": imageRef.current.value,
         "name": nameRef.current.value,
@@ -63,7 +75,9 @@ function AddProduct() {
         "active": activeRef.current.checked,
       })}}
 
-
+  fetch(config.products,
+    {method: "PUT",
+    body: JSON.stringify(products)});
 
   return (
     <div>
@@ -78,7 +92,11 @@ function AddProduct() {
       <label>{t("image")}</label> <br />
       <input ref={imageRef}  type='text' /> <br />
       <label>{t("category")}</label> <br />
-      <input ref={categoryRef}  type='text' /> <br />
+      {/* <input ref={categoryRef}  type='text' /> <br /> */}
+      <select ref={categoryRef}>
+        {categories.map(category => <option key={category.name}>{category.name}</option>)}
+      </select>
+      <br />
       <label>{t("description")}</label> <br />
       <input ref={descriptionRef}  type='text' /> <br />
       <label>{t("active")}</label> <br />

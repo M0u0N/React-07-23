@@ -1,14 +1,17 @@
-import React, { useRef, useState } from 'react'
-import productsFromFile from '../../Data/products.json'
+import React, { useRef, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import config from '../../Data/config.json'
+
+
 
 function EditProduct() {
+  const [categories, setCategories] = useState([])
+  const [products, setProducts] = useState([])
   const {t} = useTranslation();
   const {productId} = useParams();
-  const found = productsFromFile.find(product => product.id === Number(productId));
   const idRef = useRef();
   const nameRef = useRef();
   const priceRef = useRef();
@@ -17,8 +20,18 @@ function EditProduct() {
   const descriptionRef = useRef();
   const activeRef = useRef();
   const navigate = useNavigate();
-
   const [idUnique, setIdUnique] = useState("");
+  const found = products.find(product => product.id === Number(productId));
+
+  useEffect(() => {
+    fetch(config.products)
+    .then(res => res.json())
+    .then(json => setProducts(json || []))
+
+    fetch(config.categories)
+    .then(res => res.json())
+    .then(json => setCategories(json || []))
+  }, []);
 
   const checkUniqueID = () => {
     if (idRef.current.value === productId) {
@@ -27,7 +40,7 @@ function EditProduct() {
     }
 
 
-    const index = productsFromFile.findIndex(product => product.id === Number(idRef.current.value))
+    const index = products.findIndex(product => product.id === Number(idRef.current.value))
     // const product = productsFromFile.find(product => product.id === Number(idRef.current.value))
     // const result = productsFromFile.filter(product => product.id === Number(idRef.current.value))
 
@@ -65,8 +78,8 @@ function EditProduct() {
 
 
 
-    const index = productsFromFile.findIndex(product => product.id === Number(productId));
-    productsFromFile[index] = {
+    const index = products.findIndex(product => product.id === Number(productId));
+    products[index] = {
         "id": Number(idRef.current.value),
         "image": imageRef.current.value,
         "name": nameRef.current.value,
@@ -83,6 +96,10 @@ function EditProduct() {
     return <div>{t("notfound")}</div>
   }
 
+  fetch(config.products,
+    {method: "PUT",
+    body: JSON.stringify(products)});
+
   return (
     <div>
       {idUnique === false && <div>{t("uniqueID")}</div>}
@@ -95,7 +112,10 @@ function EditProduct() {
       <label>{t("image")}</label> <br />
       <input ref={imageRef} defaultValue={found.image} type='text' /> <br />
       <label>{t("category")}</label> <br />
-      <input ref={categoryRef} defaultValue={found.category} type='text' /> <br />
+      <select ref={categoryRef}>
+        {categories.map(category => <option key={category.name}>{category.name}</option>)}
+      </select>
+      <br />
       <label>{t("description")}</label> <br />
       <input ref={descriptionRef} defaultValue={found.description} type='text' /> <br />
       <label>{t("active")}</label> <br />
