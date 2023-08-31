@@ -20,6 +20,7 @@ import SingleProduct from './pages/global/SingleProduct';
 import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
 import NotFound from './pages/global/NotFound';
+import EditShops from './pages/admin/EditShops';
 
 
 
@@ -88,6 +89,7 @@ function App() {
         <Route path="admin/maintain-categories" element={<MaintainCategories/>} />
         <Route path="admin/maintain-shops" element={<MaintainShops />} />
         <Route path="admin/maintain-products" element={<MaintainProducts />} />
+        <Route path="admin/edit-shops/:shopName" element={<EditShops />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="*" element={<NotFound/>} />

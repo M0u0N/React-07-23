@@ -10,6 +10,7 @@ import config from '../../Data/config.json'
 function EditProduct() {
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
+  const [dbProducts, setDbProducts] = useState([])
   const {t} = useTranslation();
   const {productId} = useParams();
   const idRef = useRef();
@@ -21,12 +22,15 @@ function EditProduct() {
   const activeRef = useRef();
   const navigate = useNavigate();
   const [idUnique, setIdUnique] = useState("");
-  const found = products.find(product => product.id === Number(productId));
+  const found = dbProducts.find(product => product.id === Number(productId));
 
   useEffect(() => {
     fetch(config.products)
     .then(res => res.json())
-    .then(json => setProducts(json || []))
+    .then(json => {
+      setProducts(json || [])
+      setDbProducts(json || [])
+    })
 
     fetch(config.categories)
     .then(res => res.json())
@@ -78,8 +82,8 @@ function EditProduct() {
 
 
 
-    const index = products.findIndex(product => product.id === Number(productId));
-    products[index] = {
+    const index = dbProducts.findIndex(product => product.id === Number(productId));
+    dbProducts[index] = {
         "id": Number(idRef.current.value),
         "image": imageRef.current.value,
         "name": nameRef.current.value,
@@ -88,6 +92,10 @@ function EditProduct() {
         "category": categoryRef.current.value,
         "active": activeRef.current.checked
     };
+    fetch(config.products,
+      {method: "PUT",
+      body: JSON.stringify(dbProducts)});
+
     navigate("/admin/maintain-products");
 
   }
@@ -95,10 +103,6 @@ function EditProduct() {
   if (found === undefined) {
     return <div>{t("notfound")}</div>
   }
-
-  fetch(config.products,
-    {method: "PUT",
-    body: JSON.stringify(products)});
 
   return (
     <div>

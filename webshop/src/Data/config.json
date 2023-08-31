@@ -1,4 +1,5 @@
 {
     "products": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/products.json",
-    "categories": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/categories.json"
+    "categories": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/categories.json",
+    "shops": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/shops.json"
 }

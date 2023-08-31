@@ -1,23 +1,29 @@
 import React from 'react'
-import {useState,} from 'react'
-import joogidFail from '../data/joogid.json'
+import {useState, useEffect} from 'react'
+import config from '../data/config.json'
 
 function JoogiHaldus() {
-    const [joogid, muudaJoogid] = useState(joogidFail)
+    const [joogid, muudaJoogid] = useState([])
+
+    useEffect(() => {
+        fetch(config.joogidDbUrl)
+        .then(res => res.json())
+        .then(json => muudaJoogid(json || []));
+    }, []);
 
     const del = (index) => {
-        joogidFail.splice(index, 1);
-        muudaJoogid(joogidFail.slice())
+        joogid.splice(index, 1);
+        muudaJoogid(joogid.slice())
+        fetch(config.joogidDbUrl, {"method": "PUT", "body": JSON.stringify(joogid)})
     }
 
   return (
-    <div>
+    <div>joogid:
         {joogid.map((element, index) =>
-            <div key={element}>
-                {element} <button onClick={() => del(index)}>X</button>
-            </div>
-        )}
-
+            <div>
+                <span>{element.nimi}</span>
+                <button onClick={() => del(index)}>X</button>
+            </div>)}
     </div>
   )
 }
