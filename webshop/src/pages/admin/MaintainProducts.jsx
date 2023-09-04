@@ -4,7 +4,8 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
-import config from "../../Data/config.json"
+import config from "../../Data/config.json";
+import '../../css/MaintainProducts.css'
 
 function MaintainProducts() {
   const [products, setProducts] = useState([]);
@@ -46,20 +47,37 @@ function MaintainProducts() {
         {t("ttlProd")} {products.length} {t("pcs")}{" "}
       </div>
       <br />
-      {products.map((product, index) => (
-        <div key={product.id} className={product.active ? "active" : "inactive"} >
-          <img src={product.image} alt="" />
-          <div>{product.id}</div>
-          <div>{product.name}</div>
-          <div>{product.price}</div>
-          <div>{product.category}</div>
-          <div>{product.description}</div>
+      <table>
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product, index) => (
+        <tr key={product.id} className={product.active ? "active" : "inactive"} >
+          <td><img src={product.image} alt="" /></td>
+          <td>{product.id}</td>
+          <td>{product.name}</td>
+          <td>{product.price}</td>
+          <td>{product.category}</td>
+          <td>{product.description}</td>
+          <td>
           <button onClick={() => deleteProduct(index)}>{t("delete")}</button>
           <Button as={Link} to={"/admin/edit-product/" + product.id}>
             {t("edit")}
           </Button>
-        </div>
+          </td>
+        </tr>
       ))}
+        </tbody>
+      </table>
       <ToastContainer position="bottom-right" theme="dark" />
     </div>
   );

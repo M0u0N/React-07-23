@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
-
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 // import productsFromFile from "../../Data/products.json"
 // import cartFromFile from "../../Data/cart.json"
 import config from "../../Data/config.json"
+import styles from "../../css/HomePage.module.css"
+import { Spinner } from 'react-bootstrap';
 
 
 function HomePage () {
@@ -13,6 +14,7 @@ function HomePage () {
   const {t} = useTranslation();
   const [categories, setCategories] = useState([])
   const [dbProducts, setDbProducts] = useState([])
+  const [isLoading, setLoading] = useState(true)
 
   const addCart = (chosenProduct) => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]" );
@@ -33,6 +35,7 @@ function HomePage () {
     .then(json => {
       setProducts(json || [])
       setDbProducts(json || [])
+      setLoading(false)
     })
 
     fetch(config.categories)
@@ -80,6 +83,10 @@ function HomePage () {
         setProducts(ans)
       }
     
+    if (isLoading === true) {
+      return <Spinner variant='success'/>
+    }
+
 
   return (
     <div>
@@ -98,18 +105,18 @@ function HomePage () {
 
       <br /> <br/>
 
+      <div className={styles.products}>
       {products.map((product, index) => (
-      <div key={product.id}>
+      <div key={product.id} className={styles.product}>
         <img src={product.image} alt="" />
-        <div> {product.name} </div>
+        <div className={styles.name}> {product.name} </div>
         <div> {(product.price).toFixed(2)} €</div>
         <button onClick={() => addCart(product)}>{t("addCart")}</button>
         <Link to={"/product/" + product.id}>
           <button>{t("lookCloser")} </button>
       </Link>
       </div>
-      
-      ))}
+      ))}</div>
        <ToastContainer
         position="bottom-right"
         theme="dark"
