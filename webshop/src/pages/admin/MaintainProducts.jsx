@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ToastContainer, toast } from "react-toastify";
+import {Spinner} from 'react-bootstrap'
 import config from "../../Data/config.json";
 import '../../css/MaintainProducts.css'
 
@@ -11,8 +12,8 @@ function MaintainProducts() {
   const [products, setProducts] = useState([]);
   const { t } = useTranslation();
   const searchedRef = useRef();
-
   const [dbProducts, setDbProducts] = useState([])
+  const [isLoading, setLoading] = useState(true)
 
 
   useEffect(() => {
@@ -21,6 +22,7 @@ function MaintainProducts() {
     .then(json => {
       setProducts(json || [])
       setDbProducts(json || [])
+      setLoading(false)
     })
   }, []);
 
@@ -38,6 +40,10 @@ function MaintainProducts() {
       );
     setProducts(result);
   };
+
+  if (isLoading === true) {
+    return <Spinner/>
+  }
 
   return (
     <div>

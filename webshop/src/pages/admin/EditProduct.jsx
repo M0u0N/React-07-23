@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import { Spinner } from 'react-bootstrap';
 import config from '../../Data/config.json'
 
 
@@ -11,6 +12,7 @@ function EditProduct() {
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [dbProducts, setDbProducts] = useState([])
+  const [isLoading, setLoading] = useState(true)
   const {t} = useTranslation();
   const {productId} = useParams();
   const idRef = useRef();
@@ -30,6 +32,7 @@ function EditProduct() {
     .then(json => {
       setProducts(json || [])
       setDbProducts(json || [])
+      setLoading(false)
     })
 
     fetch(config.categories)
@@ -98,6 +101,10 @@ function EditProduct() {
 
     navigate("/admin/maintain-products");
 
+  }
+
+  if (isLoading === true) {
+    return <Spinner/>
   }
 
   if (found === undefined) {

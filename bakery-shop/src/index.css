@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+td:first-child{
+  font-weight: bold;
+}
