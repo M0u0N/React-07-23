@@ -38,16 +38,7 @@ box-shadow: 0 0 10px rgb(49, 42, 42);
   border-radius: 10px;
 }
 
-.active {
-  background-color: 1px solid green;
-  background-color: rgb(229, 238, 229);
-}
-
-.inactive {
-  background-color: 1px solid red;
-  background-color: rgb(231, 217, 217);
-}
-
-.active, .inactive {
-  margin: 5px;
+.carousel {
+  width: 500px;
+  margin: auto;  
 }

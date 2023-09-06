@@ -97,9 +97,8 @@ function EditProduct() {
     };
     fetch(config.products,
       {method: "PUT",
-      body: JSON.stringify(dbProducts)});
-
-    navigate("/admin/maintain-products");
+      body: JSON.stringify(dbProducts)
+      }).then(() => navigate("/admin/maintain-products"))
 
   }
 
