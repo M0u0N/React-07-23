@@ -1,21 +1,24 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import styles from "../../css/Cart.module.css"
 import ParcelMachines from '../../components/cart/ParcelMachines';
 import Payment from '../../components/cart/Payment';
+import { CartSumContext } from '../../store/CartSumContext';
 // import cartFromFile from '../../Data/cart.json'
 
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]" ))
   const {t} = useTranslation();
+  const { setCartSum } = useContext(CartSumContext);
 
  
   const del = (index) => {
     cart.splice(index, 1)
     setCart(cart.slice())
     localStorage.setItem("cart", JSON.stringify(cart));
+    setCartSum (fullCost())
   }
 
   const empty = () => {
@@ -23,6 +26,7 @@ function Cart() {
     setCart(cart.slice())
     toast.success("cart emptied")
     localStorage.setItem("cart", JSON.stringify(cart));
+    setCartSum (fullCost())
   }
 
   const fullCost = () => {
@@ -38,12 +42,14 @@ function Cart() {
     }
     setCart(cart.slice())
     localStorage.setItem("cart", JSON.stringify(cart))
+    setCartSum (fullCost())
   }
 
   const increaseQuantity = (index) => {
     cart[index].quantity++;
     setCart(cart.slice())
     localStorage.setItem("cart", JSON.stringify(cart))
+    setCartSum (fullCost())
   }
 
   

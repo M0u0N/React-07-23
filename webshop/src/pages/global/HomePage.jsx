@@ -1,16 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import { ToastContainer, toast } from 'react-toastify';
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
 // import productsFromFile from "../../Data/products.json"
 // import cartFromFile from "../../Data/cart.json"
 import config from "../../Data/config.json"
 import styles from "../../css/HomePage.module.css"
-import { Spinner, Button as BButton } from 'react-bootstrap';
-import Button from '@mui/material/Button';
 import CarouselGallery from '../../components/home/CarouselGallery';
 import SortButtons from '../../components/home/SortButtons';
 import FilterButtons from '../../components/home/FilterButtons';
+import Product from '../../components/home/Product';
+import { Spinner } from 'react-bootstrap';
+import { ToastContainer } from 'react-toastify';
 
 
 function HomePage () {
@@ -20,18 +19,6 @@ function HomePage () {
   const [dbProducts, setDbProducts] = useState([])
   const [isLoading, setLoading] = useState(true)
 
-  const addCart = (chosenProduct) => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]" );
-    const index = cart.findIndex(cartProduct => cartProduct.product.id === chosenProduct.id);
-    if (index >= 0) {
-      cart[index].quantity = cart[index].quantity +1
-    } else {
-      cart.push({ "quantity": 1, "product": chosenProduct});
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    toast.success(t("itemAddedToCart"))
- }
 
   useEffect(() => {
     fetch(config.products)
@@ -79,22 +66,14 @@ function HomePage () {
 
       <div className={styles.products}>
       {products.map((product, index) => (
-      <div key={product.id} className={styles.product}>
-        <img src={product.image} alt="" />
-        <div className={styles.name}> {product.name} </div>
-        <div> {(product.price).toFixed(2)} €</div>
-        <Button variant="contained" onClick={() => addCart(product)}>{t("addCart")}</Button>
-        <Link to={"/product/" + product.id}>
-          <Button>{t("lookCloser")} </Button>
-      </Link>
-      </div>
+      <Product key={product.id} product={product} />
       ))}</div>
-       <ToastContainer
+      <ToastContainer
         position="bottom-right"
         theme="dark"
-      
-      />  
+        />  
     </div>
+    
   )
 
   

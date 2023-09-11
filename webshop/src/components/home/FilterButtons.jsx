@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 
-function FilterButtons(props) {
+function FilterButtons({dbProducts, setProducts, categories}) {
     const {t} = useTranslation();
 // const filterMemoryBank = () => {
   //   const ans = products.filter(product => product.category === "memory bank")
@@ -14,15 +14,15 @@ function FilterButtons(props) {
   //   }
 
   const filterByCategory = (categoryClicked) => {
-    const ans = props.dbProducts.filter(product => product.category === categoryClicked)
-    props.setProducts(ans)
+    const ans = dbProducts.filter(product => product.category === categoryClicked)
+    setProducts(ans)
     }
 
   return (
     <div>
 {/* <button onClick={() => filterByCategory("memory bank")}>{t("filtMB")}</button>
       <button onClick={() => filterByCategory("usb drive")}>{t("filtUSBD")}</button> */}
-      {props.categories.map(category => <button key={category.name} onClick={() => filterByCategory(category.name)}>{t(category.name)}</button>)}
+      {categories.map(category => <button key={category.name} onClick={() => filterByCategory(category.name)}>{t(category.name)}</button>)}
     </div>
   )
 }
