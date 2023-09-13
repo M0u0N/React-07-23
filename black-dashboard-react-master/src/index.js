@@ -21,7 +21,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import AdminLayout from "layouts/Admin/Admin.js";
 import RTLLayout from "layouts/RTL/RTL.js";
-import SingleShipment from "views/SingleShipment";
+import SingleShipment from "./views/SingleShipment";
 
 import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";
@@ -40,7 +40,7 @@ root.render(
         <Routes>
           <Route path="/admin/*" element={<AdminLayout />} />
           <Route path="/rtl/*" element={<RTLLayout />} />
-          <Route path="views/single-shipment/:orderNo" element={<SingleShipment/>} />
+          <Route layout="/admin" path="single-shipment/:orderNo" element={<SingleShipment/>} />
           <Route
             path="*"
             element={<Navigate to="/admin/dashboard" replace />}

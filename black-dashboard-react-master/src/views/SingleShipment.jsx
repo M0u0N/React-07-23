@@ -15,14 +15,12 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 
 // reactstrap components
 import {
+  Spinner,
   Button,
   ButtonGroup,
   Card,
@@ -42,20 +40,56 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
-// core components
-import {
-  chartExample1,
-  chartExample2,
-  chartExample3,
-  chartExample4,
-} from "variables/charts.js";
-import Shipments from "components/ShipmentsTable/Shipments";
 
-function SingleShipment(props) {
-  const [bigChartData, setbigChartData] = React.useState("data1");
-  const setBgChartData = (name) => {
-    setbigChartData(name);
-  };
-  return
+function SingleShipment(){
+  const [shipments, setShipments] = useState([])
+  const {orderNo} = useParams();
+  const [isLoading, setLoading] = useState(true)
+  const found = shipments.find(shipment => shipment.orderNo === (orderNo))
+
+  useEffect(() => {
+    fetch("https://my.api.mockaroo.com/shipments.json?key=5e0b62d0")
+    .then(res => res.json())
+    .then(json => {
+      setShipments(json || [])
+      setLoading(false)
+    })
+  }, []);
+
+  if (isLoading === true) {
+    return <Spinner/>
+  }
+
+  if (found === undefined)
+  return <div>Shipment not found </div>
+
+  return(
+    <div className="content">
+  <Row>
+    <Col lg="12" md="12">
+      <Card>
+        <CardHeader>
+          <CardTitle tag="h4">Shipment details</CardTitle>
+        </CardHeader>
+          <CardBody>
+            <div>
+              <div>Order number: {shipments.orderNo} </div>
+              <div>Date: {shipments.date} </div>
+              <div>Customer: {shipments.customer} </div>
+              <div>Tracking number: {shipments.trackingNo} </div>
+              <div>Status: {shipments.status} </div>
+              <div>Consignee: {shipments.consignee} </div>
+            </div>
+            <Link to={"/admin/dashboard"}>
+              <Button>Back</Button>
+            </Link>
+          </CardBody>
+      </Card>
+    </Col>
+  </Row>
+  </div>   
+  )
 }
-export default SingleShipment;
+
+export default SingleShipment
+

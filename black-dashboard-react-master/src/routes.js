@@ -90,7 +90,7 @@ var routes = [
     icon: "tim-icons icon-world",
     component: <Rtl />,
     layout: "/rtl",
-  },
+  },  
   
 ];
 

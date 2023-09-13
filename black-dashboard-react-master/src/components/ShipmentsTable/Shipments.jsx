@@ -58,9 +58,11 @@ function Shipments() {
                         <Button className="btn-icon btn-simple " color="danger" size='sm' onClick={() => deleteShipment(shipment.orderNo)}>
                         <i className='fa fa-times'></i> 
                         </Button>{` `}
-                        <Button className="btn-icon btn-simple " color="success" size='sm' as={Link} to={"views/single-shipment/:index" + shipment.orderNo}>
+                        <Link to={"single-shipment/" + shipment.orderNo}>
+                        <Button className="btn-icon btn-simple " color="success" size='sm' >
                         <i className='fa fa-edit'></i> 
                         </Button>{` `}
+                        </Link>
                         </td>
                     </tr>
                 ))}
