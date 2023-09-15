@@ -1,5 +1,5 @@
-import React, {useContext, useState} from 'react'
-import { AppContext } from '../App'
+import React, {useContext,} from 'react'
+import { AppContext } from '../pages/Game'
 import "../style/header.css"
 import Playing from "./Playing"
 import End from "./End"
@@ -7,8 +7,7 @@ import Winner from "./Winner"
 
 function Header() {
 
-    const {currentChar, winner, gameOver} = useContext(AppContext)
-
+    const {winner, gameOver} = useContext(AppContext)
     
 
   return (

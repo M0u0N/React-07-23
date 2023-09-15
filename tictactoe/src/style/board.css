@@ -1,7 +1,7 @@
 .board {
     height: 380px;
     width: 380px;
-    background-color: #aed1ab;
+    background-color: #313631;
     border-radius: 5px;
     display: grid;
     grid-template-columns: 120px 120px 120px;
@@ -9,4 +9,16 @@
     grid-gap: 10px;
     padding: 10px;
     margin: 0;
+}
+
+.button-container{
+    position: absolute;
+    top: 20px;
+    right: 20px
+}
+
+.button-container2{
+    position: absolute;
+    top: 20px;
+    left: 20px
 }

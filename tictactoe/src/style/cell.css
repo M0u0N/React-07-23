@@ -7,31 +7,28 @@
     font-size: 24px;
     background-color: #c9b3b3;
     cursor: pointer;
-    transition: background-color 0.2s ease; /* Add a smooth color transition */
+    transition: background-color 0.2s ease; 
   }
   
-  /* Style for X */
+
   .cell.X {
-    color: #2196F3; /* Blue color for X */
+    color: #2196F3; 
   }
   
-  /* Style for O */
+
   .cell.O {
-    color: #F44336; /* Red color for O */
+    color: #F44336; 
   }
   
-  /* Style for the winner */
   .cell.winner {
-    background-color: #4CAF50; /* Green color for the winning cells */
-    color: #fff; /* White text for the winning cells */
+    background-color: #4CAF50; 
+    color: #fff; 
   }
   
-  /* Style for disabled cells */
   .cell.disabled {
     cursor: not-allowed;
   }
   
-  /* Hover effect for active cells */
   .cell:not(.disabled):hover {
     background-color: #ddd;
   }
