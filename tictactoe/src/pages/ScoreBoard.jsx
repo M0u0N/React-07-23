@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
-import { PlayerContext } from './Players'
+import { PlayerContext } from '../context/PlayerContext'
 
 function ScoreBoard() {
     const {players} = useContext(PlayerContext)

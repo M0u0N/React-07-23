@@ -1,8 +1,8 @@
-import React, {useState, createContext, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import {Link} from 'react-router-dom'
 import '../style/Players.css'
+import { PlayerContext } from '../context/PlayerContext';
 
-export const PlayerContext = createContext()
 
 
 function Players() {
@@ -40,9 +40,6 @@ const addPlayers = () => {
             Start game
         </Link>
         </div>
-
-        <PlayerContext.Provider value={{ players }}>
-        </PlayerContext.Provider>
     </div>
   )
 }
