@@ -3,11 +3,15 @@ import Board from '../components/Board';
 import React, {useState, createContext, useEffect, useContext} from 'react';
 import Header from '../components/Header'
 import {Link} from 'react-router-dom'
+import { PlayerContext } from '../context/PlayerContext';
 
 
 export const AppContext = createContext();
 
 function App() {
+  const {players} = useContext(PlayerContext)
+
+
   const emptyGame = [["","",""],["","",""],["","",""]]
   const [cells, setCells] = useState(emptyGame)
   const [winnerCells, setWinnerCells] = useState([[],[],[]])
@@ -66,6 +70,7 @@ function App() {
 
   function endGame(winner){
     if (winner !=="")setWinner(winner)
+    
     setGameOver(true)
   }
   
@@ -103,9 +108,9 @@ function App() {
       endGame(cells[1][1])
 
       const newWinner = [[],[],[]]
-      newWinner[0][2] = true
+      newWinner[0][0] = true
       newWinner[1][1] = true
-      newWinner[2][0] = true
+      newWinner[2][2] = true
       setWinnerCells(newWinner)
       return true
     }
@@ -127,6 +132,9 @@ function App() {
     <AppContext.Provider value={{cells, setCells, cellClick, currentChar, winner, gameOver, winnerCells}}>
       <Header/>
       <Board/>
+      <div>Player1: {players.p1}<br/>{players.p1Score} </div>
+      <div>Player2: {players.p2}<br/>{players.p2Score} </div>
+      <div>Draws: <br/>{players.Draws} </div>
     </AppContext.Provider>
 
     <div className='button-container'>

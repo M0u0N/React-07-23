@@ -8,11 +8,11 @@ function ScoreBoard() {
     <div>
         <h2>Scoreboard</h2>
       <ul>
-        {players.map((player, index) => (
+        {/* {players.map((player, index) => (
           <li key={index}>
-            {player.name}: {player.score}
+            {player.p1}
           </li>
-        ))}
+        ))} */}
       </ul>
       
     <div className='button-container'>

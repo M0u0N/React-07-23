@@ -12,12 +12,14 @@
   
 
   .cell.X {
-    color: #2196F3; 
+    color: #2196F3;
+    font-size: 75px;
   }
   
 
   .cell.O {
-    color: #F44336; 
+    color: #F44336;
+    font-size: 75px; 
   }
   
   .cell.winner {

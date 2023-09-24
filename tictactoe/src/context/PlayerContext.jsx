@@ -3,11 +3,7 @@ import React,{createContext,useState} from "react";
 export const PlayerContext = createContext();
 
 export function PlayerContextProvider({children}) {
-    const [players, setPlayers] = useState(playerNames())
-
-    function playerNames(){
-        
-    }
+    const [players, setPlayers] = useState([])
 
 
 return (

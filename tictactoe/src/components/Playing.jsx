@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react'
 import { AppContext } from '../pages/Game'
 
+
 function Playing() {
 
     const {currentChar} = useContext(AppContext)

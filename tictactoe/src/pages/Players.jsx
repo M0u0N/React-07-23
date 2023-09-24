@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import {Link} from 'react-router-dom'
 import '../style/Players.css'
 import { PlayerContext } from '../context/PlayerContext';
@@ -6,23 +6,20 @@ import { PlayerContext } from '../context/PlayerContext';
 
 
 function Players() {
-    const [players, setPlayers] = useState([
-        {name: '', score: 0},
-        {name: '', score: 0}
-    ]);
-
+    const {setPlayers} = useContext(PlayerContext)
     const player1Ref = useRef()
     const player2Ref = useRef()
 
 const addPlayers = () => {
     const Player1 = player1Ref.current.value;
     const Player2 = player2Ref.current.value;
-       setPlayers([
-        {name: Player1, score: 0},
-        {name: Player2, score: 0},
-    ]);
-    };
-
+   
+    setPlayers({
+        p1: Player1, p1Score: Number(0),
+        p2: Player2, p2Score: Number(0),
+        p3: "Draws", Draws: Number(0)
+    })
+}
   return (
     <div className='players-container'>
         <div className='input-group'>
