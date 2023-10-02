@@ -1,4 +1,4 @@
 {
-    "articleFromUrl": "https://react-07-23-default-rtdb.europe-west1.firebasedatabase.app/artikkel.json",
-    "listDataFromUrl": "https://react-07-23-default-rtdb.europe-west1.firebasedatabase.app/list.json"
+    "articleFromUrl": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/artikkel.json",
+    "listDataFromUrl": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/nimekiri.json"
 }
