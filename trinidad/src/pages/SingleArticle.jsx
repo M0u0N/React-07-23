@@ -15,7 +15,7 @@ function SingleArticle() {
         setArticle(json || [])
         setImage(json.image)
     })
-  }, []); 
+  }, [articleId]); 
 
   return (
     <div className='page'>

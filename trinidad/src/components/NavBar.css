@@ -24,6 +24,18 @@
     .logo{
         display: none;
     }
+    .twn-mobile{
+        position: fixed;
+        background: #fff;
+        top: 0;
+        left: 0;
+        width: var(--twn-menuWidth);
+        padding: 1.5625rem;
+        height: 100vh;
+        z-index: 900;
+        overflow: auto;
+    
+    }
 }
 
 .twn-menu {
