@@ -5,6 +5,7 @@ import Article from './pages/Products';
 import Intro from './pages/Intro';
 import List from './pages/List';
 import SingleArticle from './pages/SingleProduct';
+import HomePage from './pages/Homepage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar/>
       <div className='mainContent'>
         <Routes>
+          <Route path="/" element={<HomePage />} /> 
           <Route path='intro' element={<Intro />}/>
           <Route path='article' element={<Article />}/>
           <Route path='list' element={<List />}/>

@@ -14,10 +14,12 @@ const Navbar = () => {
                 <button onClick={() => setOpen(!isOpen)} className='toggle-menu'>
                 <FontAwesomeIcon icon={faBars} />
                 </button>
-                <img className='logo2'  src="https://img.icons8.com/fluency/96/blueberry.png" alt="blueberry"/>
+                <img className='logo2' src="https://img.icons8.com/fluency/96/blueberry.png" alt="blueberry"/>
             </div>
             <div className='twn-menu'>
-                <img className='logo' width="96" height="96" src="https://img.icons8.com/fluency/96/blueberry.png" alt="blueberry"/>
+                <li className='nav-link'><Link to="/"></Link>
+                    <img className='logo' width="96" height="96" src="https://img.icons8.com/fluency/96/blueberry.png" alt="blueberry"/>
+                </li>
                 <ul className='nav-link'>
                     <li className='nav-link'><Link to="/intro">Nõuded</Link><i className="fa fa-question-circle" aria-hidden="true"></i></li>
                     <li className='nav-link'><Link to="/article">Artikkel</Link><i className="fa fa-file" aria-hidden="true"></i></li>

@@ -1,4 +1,6 @@
 {
     "articleFromUrl": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/artikkel.json",
-    "listDataFromUrl": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/nimekiri.json"
+    "listDataFromUrl": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/nimekiri.json",
+    "ProductDataFromURL": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/seenedjamarjad.json",
+    "categoryDatafromURL": "https://webshop-a27dd-default-rtdb.europe-west1.firebasedatabase.app/seenedjamarjadkategooriad.json"
 }
