@@ -11,7 +11,7 @@ function Product({product}) {
         <img src={product.image} alt="" />
         <div className={styles.name}> {product.name} </div>
         <div> {(product.price).toFixed(2)} €</div>
-            <Link to={"/product/" + product.id}>
+            <Link to={"product/" + product.id}>
             <Button variant='contained'>Toote info </Button>
             </Link>
         <div>

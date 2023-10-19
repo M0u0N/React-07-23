@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import config from "../data/config.json"
 import styles from "../styles/HomePage.module.css"
+import '../styles/Homepage.css'
 import SortButtons from '../components/SortButtons'
 import FilterButtons from '../components/FilterButtons'
 import Product from "../components/Product"
@@ -8,7 +9,7 @@ import {Spinner} from 'react-bootstrap'
 
 function Homepage() {
     const [products, setProducts] = useState([])
-    const [categories, setCategories] = useState([])
+    const [categories] = useState([])
     const [dbProducts, setDbProducts] = useState([])
     const [isLoading, setLoading] = useState(true)
 
@@ -32,24 +33,28 @@ function Homepage() {
 
   return (
     <div>
-        <div> Tooteid kokku: {products.length} tükki </div>
-        <br /> 
-            <button onClick={reset}>Reset</button> 
+        <div className="text"> Tooteid kokku: {products.length} tükki </div>
+        <div className="text2">Hinnad on kõik €/kg </div>
+        <br />
+            <div className='reset'>
+                <button onClick={reset}>Reset</button>
+            </div>
         <br /> <br/>
 
-        <SortButtons className="sort"
+    <div className='button-container'>
+        <SortButtons
             products={products}
             setProducts={setProducts}
         />
         <br /> <br />
 
-        <FilterButtons className="filter"
+        <FilterButtons
             dbProducts={dbProducts}
             categories={categories}
             setProducts={setProducts}
         />
          <br /> <br/>
-
+    </div>
       <div className={styles.products}>
       {products.map((product, index) => (
       <Product key={product.id} product={product} />

@@ -1,39 +1,11 @@
-.twn-image{
-    display: block;
-    position: relative;
+.product-container{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: (auto-fit, minmax(250px 1fr));
+    margin: 0% 10% 0% 20%;
 }
-.image-title{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 0.625rem 1.5rem;
-    font-size: 1rem;
-    z-index: 6;
-    background: rgba(0,0,0,.5);
-}
-.image-top {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background: center center no-repeat;
-}
-.image-bottom{
-    position:absolute;
-    filter: blur(0.625rem);
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: -0.625rem;
-    z-index: 1;
-    background: center center no-repeat;
-    background-size: cover;
-    transition: .3s;
 
+.picture:hover img{
+    transform: scale(1.1);
+    transition: 0.5s;
 }

@@ -1,36 +1,38 @@
 import React, {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom'
-import config from '../data/config.json'
+import { useParams, Link } from 'react-router-dom'
+import config from "../data/config.json"
 import '../styles/Article.css'
+import Button from '@mui/material/Button';
 
 function SingleArticle() {
-  const {articleId} = useParams()
-  const [article, setArticle] = useState([])
-  const [image, setImage] = useState([])
+  const [products, setProducts] = useState([])
+  const {productId} = useParams()
+  const found = products.find(product => product.id === Number(productId))
 
   useEffect(() => {
-    fetch("https://midaiganes.irw.ee/api/list/" + articleId)
+    fetch(config.ProductDataFromURL)
       .then(res => res.json())
       .then(json => {
-        setArticle(json || [])
-        setImage(json.image)
+        setProducts(json || [])
     })
-  }, [articleId]); 
+  }, [productId]);
+  
+  if (!found) {
+    return <div>Product not found</div>;
+  }
 
   return (
-    <div className='page'>
-      <div className='inline'>
-        <h1>{article.title}</h1>
-        <p className='intro' dangerouslySetInnerHTML={{__html: article.intro}}></p>
-        <div className='twn-image'>
-          {image?.large && <img className='image-top' src={image.large} alt="" />}
-          {image?.title && <div className='image-title'>{image.title}</div>}
-          {image?.large && <img className="image-bottom" src={image.large} alt="" />}
-        </div>
-        <p dangerouslySetInnerHTML={{__html: article.body}}></p>
-        {article.tags?.map(tag => <button key={tag}>{tag}</button>)}
-      </div>
-    </div>
+    <div className='product-container'>
+    <img className='picture' src={found.image} alt="" />
+    <div> Toote nimi: {found.name} </div> <br/>
+    <div> Toote kilo hind:  {found.price} € </div> <br/>
+    <div> Toote kirjeldus: {found.description} </div> <br/>
+    <div> Toote säilitamine: {found.preserving} </div> <br/>
+    <div> Toote kasutamine: {found.usecase} </div> <br/>
+    <Link to={"/"}>
+      <Button variant='contained'>Tagasi</Button>
+    </Link>
+  </div>
   )
 }
 
