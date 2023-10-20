@@ -64,3 +64,9 @@ ul li a {
   margin: 0 auto;
 }
 
+.form-container{
+  display: grid;
+  justify-content: center;
+  color: white;
+  margin-top: 10%;
+}
