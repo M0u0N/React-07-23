@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import "../App.css"
+import "../index.css"
 import emailjs from '@emailjs/browser';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -37,8 +37,8 @@ export const Ordering = () => {
   
 
   return (
-    <React.Fragment>
-      <GlobalStyles
+    <React.Fragment className="form-container">
+      <GlobalStyles 
        styles={{ label: { color: 'white' } }} />
     <form
       noValidate

@@ -5,3 +5,32 @@
     color: white;
 }
 
+.map {
+    display: flex;
+    justify-content: center;
+    height: 750px;
+    width: 1000px;
+    margin-top: 5%;
+    margin-left: 18%;
+    border-radius: 10px;
+    position: relative;
+}
+
+.buttons {
+    position: absolute;
+    top: 50%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.not-found{
+    margin-left: 17%;
+    margin-top: 5%;
+    font-size: 25px;
+}
+
+.order-details{
+    margin-left: 15%;
+    margin-top: 5%;
+}

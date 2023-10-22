@@ -22,15 +22,16 @@ const Navbar = () => {
                 </a>
                 <ul className='nav-link'>
                     <li className='nav-link'><Link to="/ordering">Tellimine</Link><i className="fa fa-question-circle" aria-hidden="true"></i></li>
-                    <li className='nav-link'><Link to="/article">Artikkel</Link><i className="fa fa-file" aria-hidden="true"></i></li>
-                    <li className='nav-link'><Link to="/list">Tabel</Link><i className="fa fa-table" aria-hidden="true"></i></li>
+                    <li className='nav-link'><Link to="/shop">Asukoht</Link><i className="fa fa-file" aria-hidden="true"></i></li>
+                    <li className='nav-link'><Link to="/order-details">Kuidas tellida</Link><i className="fa fa-file" aria-hidden="true"></i></li>
                 </ul>
             </div>
           {isOpen &&  <div className='twn-mobile'>
                 <ul className='nav-link'>
-                    <li className='nav-link'><Link to="/intro">Nõuded</Link><i className="fa fa-question-circle" aria-hidden="true"></i></li>
-                    <li className='nav-link'><Link to="/article">Artikkel</Link><i className="fa fa-file" aria-hidden="true"></i></li>
-                    <li className='nav-link'><Link to="/list">Tabel</Link><i className="fa fa-table" aria-hidden="true"></i></li>
+                    <li className='nav-link'><Link to="/">tooted</Link><i className="fa fa-question-circle" aria-hidden="true"></i></li>
+                    <li className='nav-link'><Link to="/ordering">tellimine</Link><i className="fa fa-question-circle" aria-hidden="true"></i></li>
+                    <li className='nav-link'><Link to="/shop">asukoht</Link><i className="fa fa-file" aria-hidden="true"></i></li>
+                    <li className='nav-link'><Link to="/order-details">Kuidas tellida</Link><i className="fa fa-file" aria-hidden="true"></i></li>
                 </ul>
             </div>}
         </div>

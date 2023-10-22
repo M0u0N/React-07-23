@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useParams, Link } from 'react-router-dom'
 import config from "../data/config.json"
-import '../styles/Article.css'
+import '../styles/SingleProduct.css'
 import Button from '@mui/material/Button';
 
 function SingleArticle() {
